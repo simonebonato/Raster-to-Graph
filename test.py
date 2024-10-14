@@ -26,7 +26,7 @@ criterion = build_criterion(args)
 postprocessor = build_postprocessor()
 
 
-dataset_test = MyDataset(args.dataset_path + '/test', args.dataset_path + '/annot_json' + '/instances_test.json', extract_roi=False)
+dataset_test = MyDataset(args.dataset_path + '/test', args.dataset_path + '/annot_npy', args.dataset_path + '/test' + '/available_instances_test.json')
 # you can try num_workers>0 in linux
 data_loader_test = DataLoader(dataset_test, batch_size=1, shuffle=False,
                              drop_last=False, collate_fn=utils.collate_fn, num_workers=0,

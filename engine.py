@@ -188,7 +188,9 @@ def evaluate_iter(model, criterion, postprocessor, data_loader, epoch, args):
                 tensors_this_monte = copy.deepcopy(tensors)
                 preds = []
                 # each iter
-                for iter_time in range(9999999):
+                for iter_time in range(1000):
+                    if iter_time % 100 == 0 and iter_time > 1:
+                        print(f'    iteration {iter_time:d}')
                     # node prediction
                     samples = NestedTensor(tensors_this_monte, masks)
                     outputs = model(samples)
@@ -497,7 +499,7 @@ def evaluate_iter(model, criterion, postprocessor, data_loader, epoch, args):
             # d_rev, simple_cycles, results = get_cycle_basis_and_semantic_2(best_result)
 
             # visualize
-            if 0:
+            if 1:
                 visualize_monte(unnormalized, best_result, epoch, args.output_dir, batch_index + 1, d_rev, simple_cycles, results)
 
             # gt
@@ -579,7 +581,8 @@ def evaluate_iter(model, criterion, postprocessor, data_loader, epoch, args):
                       str(count) + '/' + str(len(data_loader)), '\t',
                       'rooms_TP:', rooms_TP, '\t',
                       'rooms_FP:', rooms_FP, '\t',
-                      'rooms_FN:', rooms_FN, 
+                      'rooms_FN:', rooms_FN, '\t',
+                      f'iterated {iter_time + 1:d} times' 
                       )
 
     # calculate metrics in the evaluation

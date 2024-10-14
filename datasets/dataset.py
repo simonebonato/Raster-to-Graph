@@ -16,9 +16,9 @@ from util.semantics_dict import semantics_dict
 
 
 class MyDataset(Dataset):
-    def __init__(self, img_path, annot_path, extract_roi):
+    def __init__(self, img_path, quadtree_path, annot_path):
         self.img_path = img_path
-        self.quadtree_path = '/'.join(img_path.split('/')[:-1]) + '/annot_npy'
+        self.quadtree_path = quadtree_path
         self.mode = img_path.split('/')[-1]
 
         # load annotation

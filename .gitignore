@@ -1,0 +1,11 @@
+# Dataset
+data/dataset_v5
+
+# Model Checkpoint
+output
+
+# Build
+models/ops/build
+models/ops/dist
+models/ops/*.egg-info
+__pycache__
